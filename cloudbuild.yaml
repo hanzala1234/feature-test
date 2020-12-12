@@ -5,7 +5,14 @@ steps:
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'gcr.io/${PROJECT_ID}/${_FEATURE_ID}:${COMMIT_SHA}']  
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-  entrypoint: gcloud
-  args: ['run', 'deploy', '${_FEATURE_ID}', '--image', 'gcr.io/${PROJECT_ID}/${_FEATURE_ID}:${COMMIT_SHA}', '--region', 'us-central1', '--platform', 'managed','--port','8080'] 
+  entrypoint: /bin/bash
+  env:
+     - FEATURE_ID=${__FEATURE_ID}
+  args:
+  - '-c'
+  - |
+      cloudrun.sh
+     
+
 substitutions:
    _FEATURE_ID: feature-abc
