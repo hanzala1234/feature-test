@@ -8,6 +8,8 @@ steps:
   entrypoint: /bin/bash
   env:
      - FEATURE_ID=${_FEATURE_ID}
+     - COMMIT_SHA=$COMMIT_SHA
+     - PROJECT_ID=$PROJECT_ID
   args:
   - '-c'
   - |
