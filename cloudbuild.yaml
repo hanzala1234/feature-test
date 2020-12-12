@@ -1,0 +1,8 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/ssio-staging/${_FEATURE_ID}:${COMMIT_SHA}', '.']  
+  dir: ${_REPO_NAME}
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/${PROJECT_ID}/${_FEATURE_ID}:${COMMIT_SHA}']   
+substitutions:
+   _FEATURE_ID: feature-abc

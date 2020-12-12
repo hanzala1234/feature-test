@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { Sequelize } = require('sequelize');
+// ? const { Sequelize } = require('sequelize');
 
 const sharedConfig = require('../../shared/config');
 const { getInfoFromCore, skipIfDocs } = require('../middlewares');
@@ -14,13 +14,13 @@ module.exports = (featuresConfigs, expressApp, socketioServer, coreApiTokens) =>
   featuresConfigs.forEach((featureConfig) => {
     const router = Router();
     const eventsNamespace = socketioServer.of(`/${featureConfig.route}`);
-    const database = new Sequelize({
-      host: featureConfig.dbCredentials.server,
-      database: featureConfig.dbCredentials.dbName,
-      username: featureConfig.dbCredentials.user,
-      password: featureConfig.dbCredentials.password,
-      dialect: 'postgres',
-    });
+    // ? const database = new Sequelize({
+    // ?   host: featureConfig.dbCredentials.server,
+    // ?   database: featureConfig.dbCredentials.dbName,
+    // ?   username: featureConfig.dbCredentials.user,
+    // ?   password: featureConfig.dbCredentials.password,
+    // ?   dialect: 'postgres',
+    // ? });
 
     expressApp.use(
       `/${featureConfig.route}`,
@@ -30,7 +30,7 @@ module.exports = (featuresConfigs, expressApp, socketioServer, coreApiTokens) =>
     sharedConfig.featuresResources[featureConfig.id] = {
       eventsNamespace,
       router,
-      database,
+      // ? database,
       docs: featureConfig,
       coreApiToken: coreApiTokens[featureConfig.id],
     };

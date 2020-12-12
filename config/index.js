@@ -11,19 +11,19 @@ const featuresConfigs = featureNames.map(
   (featureName) => require(`../features/${featureName}/info.json`),
 );
 
-// FEATURE_DB_CREDENTIALS = 'feature_id%username:password@34.122.12.127/some-feature;...'
-process.env.DATABASES.split(';').forEach((dbCredsStr) => {
-  const parsed = dbCredsStr.match(/(.+)%(.+):(.+)@(.+)\/(.+)/);
+// DATABASES = 'feature_id%username:password@34.122.12.127/some-feature;...'
+// ? process.env.DATABASES.split(';').forEach((dbCredsStr) => {
+// ?   const parsed = dbCredsStr.match(/(.+)%(.+):(.+)@(.+)\/(.+)/);
 
-  featuresConfigs
-    .find((featureConfig) => featureConfig.id === parsed[1])
-    .dbCredentials = {
-      user: parsed[2],
-      password: parsed[3],
-      server: parsed[4],
-      dbName: parsed[5],
-    };
-});
+// ?   featuresConfigs
+// ?     .find((featureConfig) => featureConfig.id === parsed[1])
+// ?     .dbCredentials = {
+// ?       user: parsed[2],
+// ?       password: parsed[3],
+// ?       server: parsed[4],
+// ?       dbName: parsed[5],
+// ?     };
+// ? });
 
 // CORE_API_CREDENTIALS = 'feature_id%username:password;...'
 process.env.CORE_API_CREDENTIALS.split(';').forEach((coreCredsStr) => {
