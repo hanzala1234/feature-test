@@ -7,7 +7,7 @@ steps:
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   entrypoint: /bin/bash
   env:
-     - FEATURE_ID=${__FEATURE_ID}
+     - FEATURE_ID=${_FEATURE_ID}
   args:
   - '-c'
   - |
