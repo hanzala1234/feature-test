@@ -1,9 +1,9 @@
 steps:
-# - name: 'gcr.io/cloud-builders/docker'
-#   args: ['build', '-t', 'gcr.io/${PROJECT_ID}/${_FEATURE_ID}:${COMMIT_SHA}', '.']  
-#   dir: ${_REPO_NAME}
-# - name: 'gcr.io/cloud-builders/docker'
-#   args: ['push', 'gcr.io/${PROJECT_ID}/${_FEATURE_ID}:${COMMIT_SHA}']  
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/${PROJECT_ID}/${_FEATURE_ID}:${COMMIT_SHA}', '.']  
+  dir: ${_REPO_NAME}
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/${PROJECT_ID}/${_FEATURE_ID}:${COMMIT_SHA}']  
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   entrypoint: /bin/bash
   env:
