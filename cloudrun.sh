@@ -2,7 +2,7 @@
 
 no_of_keys=$(cat env.json | jq 'keys[]' | wc -l)
 env_vars=""
-apt install jq
+apt install -y jq
 for i in $( seq 1 $no_of_keys )
 do
 env_vars+=$(cat env.json | jq keys[]  |  sed -n "$i p")=$(cat env.json | jq values[]  |  sed -n "$i p") 
