@@ -1,7 +1,7 @@
 {
-  "id": "88005553535",
+  "id": "<feature-id>",
   "version": "1.0.0",
   "name": "Example feature",
   "description": "This is example feature",
-  "route": "example-feature"
+  "route": "example"
 }
