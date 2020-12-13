@@ -1,9 +1,9 @@
 steps:
-# - name: 'gcr.io/cloud-builders/docker'
-#   args: ['build', '-t', 'gcr.io/${PROJECT_ID}/feature-${_FEATURE_ID}:${COMMIT_SHA}', '.']  
-#   dir: ${_REPO_NAME}
-# - name: 'gcr.io/cloud-builders/docker'
-#   args: ['push', 'gcr.io/${PROJECT_ID}/feature-${_FEATURE_ID}:${COMMIT_SHA}']  
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'gcr.io/${PROJECT_ID}/feature-${_FEATURE_ID}:${COMMIT_SHA}', '.']  
+  dir: ${_REPO_NAME}
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'gcr.io/${PROJECT_ID}/feature-${_FEATURE_ID}:${COMMIT_SHA}']  
 - name: gcr.io/cloud-builders/gcloud
   entrypoint: 'bash'
   args: [ '-c', 'gcloud  beta secrets versions access latest --secret=${_ENV_SECRETS} > env.json' ]

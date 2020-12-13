@@ -1,5 +1,4 @@
 #!/bin/bash
-cat /etc/os-release
 apt-get update && apt install -y jq
 no_of_keys=$(cat env.json | jq 'keys[]' | wc -l)
 env_vars=""
