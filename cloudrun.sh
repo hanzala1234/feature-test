@@ -1,5 +1,6 @@
 #!/bin/bash
-apt install -y jq
+cat /etc/os-release
+apt-get update && apt install -y jq
 no_of_keys=$(cat env.json | jq 'keys[]' | wc -l)
 env_vars=""
 for i in $( seq 1 $no_of_keys )
