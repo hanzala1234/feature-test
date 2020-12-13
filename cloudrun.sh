@@ -7,7 +7,7 @@ do
 env_vars+=$(cat env.json | jq keys[]  |  sed -n "$i p")=$(cat env.json | jq values[]  |  sed -n "$i p") 
 env_vars+=","
 done
-
+cat feature-${FEATURE_ID}
 gcloud run deploy feature-${FEATURE_ID} --update-env-vars $env_vars --image gcr.io/$PROJECT_ID/${FEATURE_ID}:${COMMIT_SHA}  --allow-unauthenticated --region us-central1 --platform managed --port 8080
 # for i in {0..$no_of_keys}
 # do
